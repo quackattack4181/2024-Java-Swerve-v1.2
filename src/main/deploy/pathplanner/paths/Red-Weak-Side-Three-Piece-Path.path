@@ -1,0 +1,124 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 15.68007278532592,
+        "y": 4.387391197581964
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 15.992065048265314,
+        "y": 3.7341573970526056
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 12.784394594917458,
+        "y": 1.3357168757092863
+      },
+      "prevControl": {
+        "x": 13.925116306289626,
+        "y": 1.5112125236126968
+      },
+      "nextControl": {
+        "x": 11.818590333963776,
+        "y": 1.1871316047933351
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 8.289756056946795,
+        "y": 0.8189796902159131
+      },
+      "prevControl": {
+        "x": 10.532200446823698,
+        "y": 1.1212221949384515
+      },
+      "nextControl": {
+        "x": 6.739281445272182,
+        "y": 0.6100026773380307
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 12.64789797988147,
+        "y": 1.3357168757092863
+      },
+      "prevControl": {
+        "x": 9.703470998390928,
+        "y": 1.1797207442395892
+      },
+      "nextControl": {
+        "x": 15.596418751520067,
+        "y": 1.4919298967232513
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 15.68007278532592,
+        "y": 4.387391197581964
+      },
+      "prevControl": {
+        "x": 15.40707955525395,
+        "y": 2.7299323007164276
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 1.85,
+      "rotationDegrees": 8.153050694925641,
+      "rotateFast": false
+    }
+  ],
+  "constraintZones": [],
+  "eventMarkers": [
+    {
+      "name": "Run Intake",
+      "waypointRelativePos": 1.6,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "runRingIntake"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 5.0,
+    "maxAcceleration": 5.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 42.780344446802225,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": "Amos",
+  "previewStartingState": {
+    "rotation": 43.40885972880554,
+    "velocity": 0
+  },
+  "useDefaultConstraints": false
+}

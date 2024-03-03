@@ -1,0 +1,37 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 15.158113507110206,
+      "y": 5.5430292057165325
+    },
+    "rotation": -0.2357837698766398
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "named",
+          "data": {
+            "name": "shootRingClose"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "R2-Middle-Path"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "shootRingClose"
+          }
+        }
+      ]
+    }
+  },
+  "folder": "Red",
+  "choreoAuto": false
+}

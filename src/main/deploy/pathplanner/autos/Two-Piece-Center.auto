@@ -1,0 +1,37 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 1.382399573915957,
+      "y": 5.566417514601411
+    },
+    "rotation": -179.38023800653718
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "named",
+          "data": {
+            "name": "shootRingClose"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Two-Piece-Center-Path"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "shootRingClose"
+          }
+        }
+      ]
+    }
+  },
+  "folder": "Amos",
+  "choreoAuto": false
+}

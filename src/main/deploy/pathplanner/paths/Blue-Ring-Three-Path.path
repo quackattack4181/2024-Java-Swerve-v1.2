@@ -1,0 +1,102 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 0.8561626240061597,
+        "y": 6.700750495518085
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 1.8561626240061617,
+        "y": 6.700750495518085
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 8.293644849397962,
+        "y": 7.285458217640082
+      },
+      "prevControl": {
+        "x": 7.4750540384271655,
+        "y": 7.016492665463964
+      },
+      "nextControl": {
+        "x": 9.24367659843845,
+        "y": 7.5976115066105265
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 3.557512300209785,
+        "y": 6.958021893251764
+      },
+      "prevControl": {
+        "x": 5.437422524417703,
+        "y": 7.419940993728141
+      },
+      "nextControl": {
+        "x": 1.6776020760018726,
+        "y": 6.496102792775386
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 1.4291761916857164,
+        "y": 5.578111669043852
+      },
+      "prevControl": {
+        "x": 2.446567628177991,
+        "y": 5.566417514601411
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "eventMarkers": [
+    {
+      "name": "Run Intake",
+      "waypointRelativePos": 1.6,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "runRingIntake"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 5.0,
+    "maxAcceleration": 5.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": -179.23097531742198,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": "Amos",
+  "previewStartingState": {
+    "rotation": -133.05851360908565,
+    "velocity": 0
+  },
+  "useDefaultConstraints": false
+}

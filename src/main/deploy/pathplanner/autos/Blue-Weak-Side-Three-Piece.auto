@@ -1,0 +1,49 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 0.8795509328910394,
+      "y": 4.37
+    },
+    "rotation": 134.99999999999994
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "named",
+          "data": {
+            "name": "shootRingClose"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Blue-Weak-Side-Three-Piece-Path1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "shootRingClose"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Blue-Weak-Side-Three-Piece-Path2"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "shootRingClose"
+          }
+        }
+      ]
+    }
+  },
+  "folder": "Amos",
+  "choreoAuto": false
+}
