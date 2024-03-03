@@ -190,14 +190,14 @@ public class Robot extends TimedRobot {
   }
   public static Command runRingIntake() {
     return new InstantCommand(() -> {
-      // runHeadDownPickUp(3.00);
-      runIntake();
+      
     });
   }
-
-
-
-  // Complete COMMANDS FOR AUTONOMOUS ABOVE****************************************************
+  public static Command runIntakeNormal() {
+    return new InstantCommand(() -> {
+      
+    });
+  }
 
   
 
@@ -222,10 +222,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-    // Runs the Scheduler.  This is responsible for polling buttons, adding newly-scheduled
-    // commands, running already-scheduled commands, removing finished or interrupted commands,
-    // and running subsystem periodic() methods.  This must be called from the robot's periodic
-    // block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
 
     SmartDashboard.putNumber("Mod0 - 7 & 8", Swerve.mSwerveMods[0].getState().angle.getDegrees());

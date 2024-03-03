@@ -41,7 +41,6 @@ public class RobotContainer {
     NamedCommands.registerCommand("shootRingLine", Robot.shootRingLine());
     NamedCommands.registerCommand("runRingIntake", Robot.runRingIntake());
 
-
     s_Swerve.setDefaultCommand(
         new TeleopSwerve(
             s_Swerve,
@@ -66,17 +65,7 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
-  private void configureButtonBindings() {
-    /* Driver Buttons */
-
-    // if (driver.getBackButton()) {
-    //   if (driver.getStartButton()) {
-    //     s_Swerve.zeroGyro();
-    //   }
-    // }
-
-
-  }
+  private void configureButtonBindings() {}
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
