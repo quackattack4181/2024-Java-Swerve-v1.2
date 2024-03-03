@@ -6,7 +6,6 @@ package frc.robot;
 
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
-import com.pathplanner.lib.commands.PathPlannerAuto;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
@@ -89,7 +88,4 @@ public class RobotContainer {
     return autoChooser.getSelected();
   }
 
-  // public Command getAutonomousCommand() {
-  //   return new PathPlannerAuto("Test Auto");
-  // }
 }
