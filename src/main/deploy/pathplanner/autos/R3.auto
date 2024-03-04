@@ -1,0 +1,49 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 0.86,
+      "y": 4.4
+    },
+    "rotation": 133.0
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "named",
+          "data": {
+            "name": "runShootClose"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "B3-Path1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "runShootClose"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "B3-Path2"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "runShootClose"
+          }
+        }
+      ]
+    }
+  },
+  "folder": "Regional Two",
+  "choreoAuto": false
+}

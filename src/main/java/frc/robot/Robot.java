@@ -39,11 +39,16 @@ public class Robot extends TimedRobot {
 
   public static double off = 0.00;
 
-  static double baseArmEncoderAngle = 107.00;
-
   // Head Raise and Lower Speed
-  public static double reducedMotorSpeedMultiplier = 0.30;
-  public double reducedMotorSpeedMultiplierFast = 0.60; // Right stick raise speed
+  public static double headSpeed = 0.30;
+  public double headSpeedFast = 0.60; // Right stick raise speed
+
+  // Head Shooting Positions
+  public static double baseHeadAngle = 107.00;
+  public static double topHeadAngle = baseHeadAngle - 90;
+  public static double longShootAngle = baseHeadAngle - 41;
+  public static double lineShootAngle = baseHeadAngle - 35;
+  public static double closeShootAngle = baseHeadAngle - 25;
   
   // Move shooting wheels.
   public static double shootingMotorSpeed = 0.90;
@@ -78,16 +83,16 @@ public class Robot extends TimedRobot {
   // Custom Functions <-----------------------
   //==========================================
   public void HeadUp() {
-    headMotor33.set(-reducedMotorSpeedMultiplier);
-    headMotor34.set(-reducedMotorSpeedMultiplier);
+    headMotor33.set(-headSpeed);
+    headMotor34.set(-headSpeed);
   };
   public void HeadUpFast() {
-    headMotor33.set(-reducedMotorSpeedMultiplierFast);
-    headMotor34.set(-reducedMotorSpeedMultiplierFast);
+    headMotor33.set(-headSpeedFast);
+    headMotor34.set(-headSpeedFast);
   };
   public void HeadDown() {
-    headMotor33.set(reducedMotorSpeedMultiplier);
-    headMotor34.set(reducedMotorSpeedMultiplier);
+    headMotor33.set(headSpeed);
+    headMotor34.set(headSpeed);
   };
   public void HeadDownSlow() {
     headMotor33.set(0.10);
@@ -106,48 +111,24 @@ public class Robot extends TimedRobot {
   }
 
   // Auto Commands Below
-
-  public static void shootRing() {
+  // SHOOTING & HEAD ANGLE FUNCTIONS <<<<-----------------------------------
+  // ========================================================================
+  public static void shootRingAuto(double headAngle) {
     double startTime = Timer.getFPGATimestamp(); 
     double liveTime = 0.00;
-    while (liveTime < 3.5) {
-      liveTime = Timer.getFPGATimestamp() - startTime;
-
-      if (liveTime < 2.5) {
-        setHeadAngle(baseArmEncoderAngle - 25);
-      }
+    while (liveTime < 2.5) {
       shooterMotor31.set(shootingMotorSpeed);
       shooterMotor32.set(shootingMotorSpeed);
-      if (liveTime > 2.0) {
+      if (liveTime < 1.5) {
+        setHeadAngle(headAngle);
+      }
+      if (liveTime > 1.0) {
         Motor5.set(ControlMode.PercentOutput, -intakeMotorSpeed);
       }
-      if (liveTime > 2.5) {
-        setHeadAngle(baseArmEncoderAngle);
+      if (liveTime > 1.5) {
+        setHeadAngle(baseHeadAngle);
       }
-    }
-    shooterMotor31.set(off);
-    shooterMotor32.set(off);
-    Motor5.set(ControlMode.PercentOutput, off);
-    headMotor33.set(-off);
-    headMotor34.set(-off);
-  }
-  public static void shootRingPosTwo() {
-    double startTime = Timer.getFPGATimestamp(); 
-    double liveTime = 0.00;
-    while (liveTime < 3.5) {
       liveTime = Timer.getFPGATimestamp() - startTime;
-
-      if (liveTime < 2.5) {
-        setHeadAngle(baseArmEncoderAngle - 35);
-      }
-      shooterMotor31.set(shootingMotorSpeed);
-      shooterMotor32.set(shootingMotorSpeed);
-      if (liveTime > 2.0) {
-        Motor5.set(ControlMode.PercentOutput, -intakeMotorSpeed);
-      }
-      if (liveTime > 2.5) {
-        setHeadAngle(baseArmEncoderAngle);
-      }
     }
     shooterMotor31.set(off);
     shooterMotor32.set(off);
@@ -156,50 +137,89 @@ public class Robot extends TimedRobot {
     headMotor34.set(-off);
   }
 
-  public static void runIntake() {
+  // ========================================================================
+  // Shoots ring close
+  public static Command runShootClose() { // <------ runShootRingClose
+    return new InstantCommand(() -> {
+      shootRingAuto(closeShootAngle);
+    });
+  }
+  // Shoots ring from the line
+  public static Command runShootLine() { // <------ runShootRingLine
+    return new InstantCommand(() -> {
+      shootRingAuto(lineShootAngle);
+    });
+  }
+  // Shoots ring close
+  public static Command runShootLong() { // <------ runShootRingLong
+    return new InstantCommand(() -> {
+      shootRingAuto(longShootAngle);
+    });
+  }
+
+  // ========================================================================
+  public static void Intake1() {
     double startTime = Timer.getFPGATimestamp(); 
-    double liveTime = 0.00;
-    double seconds = 2.00;
-    while (liveTime < seconds) {
-      liveTime = Timer.getFPGATimestamp() - startTime;
-      if (liveTime < seconds - 1.0) {
-        Motor5.set(ControlMode.PercentOutput, -intakeMotorSpeed);
-      }
-      if (liveTime > seconds - 1.0) {
-        Motor5.set(ControlMode.PercentOutput, off);
-      }
-      if (liveTime > seconds - 0.25) {
-        Motor5.set(ControlMode.PercentOutput, intakeMotorSpeed*0.40); // Reverse Intake.
-      }
+    double runTime = 1.00;
+    while (Timer.getFPGATimestamp() - startTime < runTime) {
+      Motor5.set(ControlMode.PercentOutput, -intakeMotorSpeed);
     }
     Motor5.set(ControlMode.PercentOutput, off);
   }
-
-
-  // Complete COMMANDS FOR AUTONOMOUS BELOW****************************************************
-
-  public static Command shootRingClose() {
+  // Run intake for 1 second.
+  public static Command runIntake1() { // <------------- runIntake1 (1 seconds)
     return new InstantCommand(() -> {
-      shootRing();
-    });
-  }
-  public static Command shootRingLine() {
-    return new InstantCommand(() -> {
-      shootRingPosTwo();
-    });
-  }
-  public static Command runRingIntake() {
-    return new InstantCommand(() -> {
-      
-    });
-  }
-  public static Command runIntakeNormal() {
-    return new InstantCommand(() -> {
-      
+      Intake1();
     });
   }
 
-  
+  // ========================================================================
+  public static void Intake2() {
+    double startTime = Timer.getFPGATimestamp(); 
+    double runTime = 2.00;
+    while (Timer.getFPGATimestamp() - startTime < runTime) {
+      Motor5.set(ControlMode.PercentOutput, -intakeMotorSpeed);
+    }
+    Motor5.set(ControlMode.PercentOutput, off);
+  }
+  // Run intake for 2 second.
+  public static Command runIntake2() { // <------------- runIntake2 (2 seconds)
+    return new InstantCommand(() -> {
+      Intake2();
+    });
+  }
+  // ========================================================================
+  public static void Intake3() {
+    double startTime = Timer.getFPGATimestamp(); 
+    double runTime = 3.00;
+    while (Timer.getFPGATimestamp() - startTime < runTime) {
+      Motor5.set(ControlMode.PercentOutput, -intakeMotorSpeed);
+    }
+    Motor5.set(ControlMode.PercentOutput, off);
+  }
+  // Run intake for 3 second.
+  public static Command runIntake3() { // <------------- runIntake3 (3 seconds)
+    return new InstantCommand(() -> {
+      Intake3();
+    });
+  }
+  // ========================================================================
+  public static void IntakeAdjust() {
+    double startTime = Timer.getFPGATimestamp(); 
+    double runTime = 0.25;
+    while (Timer.getFPGATimestamp() - startTime < runTime) {
+      Motor5.set(ControlMode.PercentOutput, intakeMotorSpeed*0.40);
+    }
+    Motor5.set(ControlMode.PercentOutput, off);
+  }
+  // Adjust's the ring after intake.
+  public static Command runIntakeAdjust() { // <-------- runIntakeAdjust (0.25 seconds)
+    return new InstantCommand(() -> {
+      IntakeAdjust();
+    });
+  }
+
+  // ========================================================================
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -261,35 +281,8 @@ public class Robot extends TimedRobot {
 
   }
 
-  
-  /** This function is called periodically during autonomous. */
   @Override
-  public void autonomousPeriodic() {
-    // double currentTime = startTime - Timer.getFPGATimestamp();
-    // double liveTime = currentTime *-1;
-    // System.out.println(liveTime);
-    /*******************************/
-    // if (liveTime < 3) {
-    //   autoMove(0.30, false);
-    // }
-
-    // if (liveTime > 0 && liveTime < 10) {
-    //   setHeadAngle(280);
-      
-    // }
-    // if (liveTime > 5 && liveTime < 9) {
-    //   shooterMotor31.set(shootingMotorSpeed);
-    //   shooterMotor32.set(shootingMotorSpeed);
-    // } else {
-    //   shooterMotor31.set(off);
-    //   shooterMotor32.set(off);
-    // }
-    // if (liveTime > 7 && liveTime < 9) {
-    //   Motor5.set(ControlMode.PercentOutput, -intakeMotorSpeed);
-    // } else {
-    //   Motor5.set(ControlMode.PercentOutput, off);
-    // }
-  }
+  public void autonomousPeriodic() {}
 
   @Override
   public void teleopInit() {
@@ -322,20 +315,27 @@ public class Robot extends TimedRobot {
     }
   }
 
-  
-  public static void setHeadAngleFaster(double targetAngle) {
-    if (getHeadAngle() > targetAngle + 5) {
-      headMotor33.set(-reducedMotorSpeedMultiplier);
-      headMotor34.set(-reducedMotorSpeedMultiplier);
+  // ###############################################
+  // ###############################################
+  public static void shoot() {
+    double startTime = Timer.getFPGATimestamp(); 
+    double liveTime = 0.00;
+    while (liveTime < 1.5) {
+      shooterMotor31.set(shootingMotorSpeed);
+      shooterMotor32.set(shootingMotorSpeed);
+      if (liveTime > 1.0) {
+        Motor5.set(ControlMode.PercentOutput, -intakeMotorSpeed);
+      }
+      liveTime = Timer.getFPGATimestamp() - startTime;
     }
-    else if (getHeadAngle() < targetAngle) {
-      headMotor33.set(reducedMotorSpeedMultiplier);
-      headMotor34.set(reducedMotorSpeedMultiplier);
-    } else {
-      headMotor33.set(-stallSpeed);
-      headMotor34.set(-stallSpeed);
-    }
+    shooterMotor31.set(off);
+    shooterMotor32.set(off);
+    Motor5.set(ControlMode.PercentOutput, off);
   }
+  // ###############################################
+  // ###############################################
+
+
 
   /** This function is called periodically during operator control. */
   @Override
@@ -364,11 +364,11 @@ public class Robot extends TimedRobot {
     /* Driver Two Controls *////////////////////////////////////////////////////////////////////////
 
     if (driverTwo.getLeftY() > 0.50) {
-      setHeadAngle(baseArmEncoderAngle);
+      setHeadAngle(baseHeadAngle);
       //Above is the Head all the way down angle.
       
     } else if (driverTwo.getLeftY() < -0.50) {
-      setHeadAngle(baseArmEncoderAngle - 90);
+      setHeadAngle(topHeadAngle);
       //Above is the head all the way up angle.
 
     } else if (driverTwo.getRightY() < -0.50) {
@@ -376,26 +376,33 @@ public class Robot extends TimedRobot {
 
     // Head Angle One
     } else if (driverTwo.getXButton()) {
-      setHeadAngle(baseArmEncoderAngle - 41);  //<-------------------------------- Angle #1 (Name Here)
+      setHeadAngle(longShootAngle);  //<-------------------------------- Angle #1 (Name Here)
 
     // Head Angle Two
     } else if (driverTwo.getYButton()) {
-      setHeadAngle(baseArmEncoderAngle - 25);  //<-------------------------------- Angle #2 (Name Here)
+      setHeadAngle(closeShootAngle);  //<-------------------------------- Angle #2 (Name Here)
 
     // Head Angle Three
     } else if (driverTwo.getBButton()) {
-      setHeadAngle(baseArmEncoderAngle - 35);  //<-------------------------------- Angle #3 (Name Here)
+      setHeadAngle(lineShootAngle);  //<-------------------------------- Angle #3 (Name Here)
 
     } else {
       stopHead();
     };
 
+    //************************************************** */
+    //************************************************** */
+    
+    //************************************************** */
 
     // Shoots the ring
-    
     if (driverTwo.getRightTriggerAxis() > 0.50) {
       shooterMotor31.set(shootingMotorSpeed);
       shooterMotor32.set(shootingMotorSpeed);
+
+    // TEST THIS FOR ONE BUTTON SHOOT
+    // } else if (driverTwo.getRightBumperReleased()) {
+    //   shoot();
 
     // Shoots the ring 
     } else if (driverTwo.getLeftTriggerAxis() > 0.50) { 

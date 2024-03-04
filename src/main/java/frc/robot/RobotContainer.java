@@ -37,9 +37,17 @@ public class RobotContainer {
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
 
-    NamedCommands.registerCommand("shootRingClose", Robot.shootRingClose());
-    NamedCommands.registerCommand("shootRingLine", Robot.shootRingLine());
-    NamedCommands.registerCommand("runRingIntake", Robot.runRingIntake());
+    NamedCommands.registerCommand("runShootClose", Robot.runShootClose());
+    NamedCommands.registerCommand("runShootLine", Robot.runShootLine());
+    NamedCommands.registerCommand("runShootLong", Robot.runShootLong());
+
+    NamedCommands.registerCommand("runIntake1", Robot.runIntake1());
+    NamedCommands.registerCommand("runIntake2", Robot.runIntake2());
+    NamedCommands.registerCommand("runIntake3", Robot.runIntake3());
+
+    NamedCommands.registerCommand("runIntakeAdjust", Robot.runIntakeAdjust());
+    
+    NamedCommands.registerCommand("runShootLong", Robot.runShootLong());
 
     s_Swerve.setDefaultCommand(
         new TeleopSwerve(
