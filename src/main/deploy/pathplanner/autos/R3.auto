@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.86,
+      "x": 15.7,
       "y": 4.4
     },
-    "rotation": 133.0
+    "rotation": 48.93017554572544
   },
   "command": {
     "type": "sequential",
@@ -20,7 +20,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "B3-Path1"
+            "pathName": "R3-Path1"
           }
         },
         {
@@ -32,7 +32,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "B3-Path2"
+            "pathName": "R3-Path2"
           }
         },
         {
@@ -44,6 +44,6 @@
       ]
     }
   },
-  "folder": "Regional Two",
+  "folder": "Red3",
   "choreoAuto": false
 }

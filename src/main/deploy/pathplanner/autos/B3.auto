@@ -10,9 +10,40 @@
   "command": {
     "type": "sequential",
     "data": {
-      "commands": []
+      "commands": [
+        {
+          "type": "named",
+          "data": {
+            "name": "runShootClose"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "B3-Path1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "runShootClose"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "B3-Path2"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "runShootClose"
+          }
+        }
+      ]
     }
   },
-  "folder": "Regional Two",
+  "folder": "Blue3",
   "choreoAuto": false
 }

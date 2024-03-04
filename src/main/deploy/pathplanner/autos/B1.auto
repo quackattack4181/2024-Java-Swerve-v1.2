@@ -3,16 +3,47 @@
   "startingPose": {
     "position": {
       "x": 0.8592474327805798,
-      "y": 4.400014514314742
+      "y": 6.7092419899125515
     },
-    "rotation": 133.0
+    "rotation": -133.0
   },
   "command": {
     "type": "sequential",
     "data": {
-      "commands": []
+      "commands": [
+        {
+          "type": "named",
+          "data": {
+            "name": "runShootClose"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "B1-Path1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "runShootClose"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "B1-Path2"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "runShootClose"
+          }
+        }
+      ]
     }
   },
-  "folder": "Regional Two",
+  "folder": "Blue1",
   "choreoAuto": false
 }
