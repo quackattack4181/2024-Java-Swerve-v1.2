@@ -120,13 +120,13 @@ public class Robot extends TimedRobot {
     while (liveTime < 2.5) {
       shooterMotor31.set(shootingMotorSpeed);
       shooterMotor32.set(shootingMotorSpeed);
-      if (liveTime < 1.5) {
+      if (liveTime < 2.0) {
         setHeadAngle(headAngle);
       }
-      if (liveTime > 1.0) {
+      if (liveTime > 1.35) {
         Motor5.set(ControlMode.PercentOutput, -intakeMotorSpeed);
       }
-      if (liveTime > 1.5) {
+      if (liveTime > 2.0) {
         setHeadAngle(baseHeadAngle);
       }
       liveTime = Timer.getFPGATimestamp() - startTime;
@@ -159,9 +159,25 @@ public class Robot extends TimedRobot {
   }
 
   // ========================================================================
-  public static void Intake1() {
+  public static void headDownAngle1() {
     double startTime = Timer.getFPGATimestamp(); 
     double runTime = 1.00;
+    while (Timer.getFPGATimestamp() - startTime < runTime) {
+      setHeadAngle(baseHeadAngle);
+    }
+    headMotor33.set(off);
+    headMotor34.set(off);
+  }
+  // Run intake for 1 second.
+  public static Command runheadDownAngle1() { // <------------- runIntake1 (1 seconds)
+    return new InstantCommand(() -> {
+      headDownAngle1();
+    });
+  }
+  // ========================================================================
+  public static void Intake1() {
+    double startTime = Timer.getFPGATimestamp(); 
+    double runTime = 0.40;
     while (Timer.getFPGATimestamp() - startTime < runTime) {
       Motor5.set(ControlMode.PercentOutput, -intakeMotorSpeed);
     }
@@ -245,19 +261,25 @@ public class Robot extends TimedRobot {
   public void robotPeriodic() {
     CommandScheduler.getInstance().run();
 
-    SmartDashboard.putNumber("Mod0 - 7 & 8", Swerve.mSwerveMods[0].getState().angle.getDegrees());
-    SmartDashboard.putNumber("Mod1 - 1 & 2", Swerve.mSwerveMods[1].getState().angle.getDegrees());
-    SmartDashboard.putNumber("Mod2 - 5 & 6", Swerve.mSwerveMods[2].getState().angle.getDegrees());
-    SmartDashboard.putNumber("Mod3 - 3 & 4", Swerve.mSwerveMods[3].getState().angle.getDegrees());
+    SmartDashboard.putNumber("Mod0- Absolute - 7 & 8", Swerve.mSwerveMods[0].absoluteAngleEncoder.getAbsolutePosition().getValueAsDouble()*360);
+    SmartDashboard.putNumber("Mod0- Integrated - 7 & 8", Swerve.mSwerveMods[0].integratedAngleEncoder.getPosition());
+
+    SmartDashboard.putNumber("Mod1- Absolute - 1 & 2", Swerve.mSwerveMods[1].absoluteAngleEncoder.getAbsolutePosition().getValueAsDouble()*360);
+    SmartDashboard.putNumber("Mod1- Integrated - 1 & 2", Swerve.mSwerveMods[1].integratedAngleEncoder.getPosition());
+
+    SmartDashboard.putNumber("Mod2- Absolute - 5 & 6", Swerve.mSwerveMods[2].absoluteAngleEncoder.getAbsolutePosition().getValueAsDouble()*360);
+    SmartDashboard.putNumber("Mod2- Integrated - 5 & 6", Swerve.mSwerveMods[2].integratedAngleEncoder.getPosition());
+
+    SmartDashboard.putNumber("Mod3- Absolute - 3 & 4", Swerve.mSwerveMods[3].absoluteAngleEncoder.getAbsolutePosition().getValueAsDouble()*360);
+    SmartDashboard.putNumber("Mod3- Integrated - 3 & 4", Swerve.mSwerveMods[3].integratedAngleEncoder.getPosition());
+
+
+    // SmartDashboard.putNumber("Mod1 - 7 & 8", Swerve.mSwerveMods[1].getState().angle.getDegrees());
+    // SmartDashboard.putNumber("Mod1 - 1 & 2", Swerve.mSwerveMods[1].getState().angle.getDegrees());
+    // SmartDashboard.putNumber("Mod2 - 5 & 6", Swerve.mSwerveMods[2].getState().angle.getDegrees());
+    // SmartDashboard.putNumber("Mod3 - 3 & 4", Swerve.mSwerveMods[3].getState().angle.getDegrees());
     SmartDashboard.putNumber("Head Angle Position", getHeadAngle());
     
-
-    if (driver.getBackButtonPressed()) {
-      Swerve.mSwerveMods[0].resetToAbsolute();
-      Swerve.mSwerveMods[1].resetToAbsolute();
-      Swerve.mSwerveMods[2].resetToAbsolute();
-      Swerve.mSwerveMods[3].resetToAbsolute();
-    }
   }
 
   /** This function is called once each time the robot enters Disabled mode. */
@@ -321,10 +343,10 @@ public class Robot extends TimedRobot {
   public static void shoot() {
     double startTime = Timer.getFPGATimestamp(); 
     double liveTime = 0.00;
-    while (liveTime < 1.5) {
+    while (liveTime < 1.0) {
       shooterMotor31.set(shootingMotorSpeed);
       shooterMotor32.set(shootingMotorSpeed);
-      if (liveTime > 1.0) {
+      if (liveTime > 0.5) {
         Motor5.set(ControlMode.PercentOutput, -intakeMotorSpeed);
       }
       liveTime = Timer.getFPGATimestamp() - startTime;
@@ -341,6 +363,13 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
+
+    if (driver.getBackButtonPressed()) {
+      Swerve.mSwerveMods[0].resetToAbsolute();
+      Swerve.mSwerveMods[1].resetToAbsolute();
+      Swerve.mSwerveMods[2].resetToAbsolute();
+      Swerve.mSwerveMods[3].resetToAbsolute();
+    }
     
     /* Driver One Controls *////////////////////////////////////////////////////////////////////////
     

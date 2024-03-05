@@ -29,8 +29,8 @@ public class SwerveModule {
   public CANSparkMax driveMotor;
 
   private RelativeEncoder driveEncoder;
-  private RelativeEncoder integratedAngleEncoder;
-  private CANcoder absoluteAngleEncoder;
+  public RelativeEncoder integratedAngleEncoder;
+  public CANcoder absoluteAngleEncoder;
 
   private final SparkPIDController driveController;
   private final SparkPIDController angleController;
@@ -52,7 +52,7 @@ public class SwerveModule {
 
     /* Angle Motor Config */
     angleMotor = new CANSparkMax(moduleConstants.angleMotorID, MotorType.kBrushless);
-    absoluteEncoderPosition = Rotation2d.fromDegrees(absoluteAngleEncoder.getAbsolutePosition().getValueAsDouble()*360); // This is ---> getAbsoluteEncoderPosition();
+    // absoluteEncoderPosition = Rotation2d.fromDegrees(absoluteAngleEncoder.getAbsolutePosition().getValueAsDouble()*360); // This is ---> getAbsoluteEncoderPosition();
     integratedAngleEncoder = angleMotor.getEncoder();
     angleController = angleMotor.getPIDController();
     configAngleMotor();
@@ -76,9 +76,16 @@ public class SwerveModule {
     setSpeed(desiredState, isOpenLoop);
   }
 
+  public double getAbsoluteDegreeValue() {
+    return absoluteAngleEncoder.getAbsolutePosition().getValueAsDouble()*360;
+  }
+  public double getIntegratedEncoderDegreeValue() {
+    return integratedAngleEncoder.getPosition();
+  }
   public void resetToAbsolute() {
-    double absolutePositionDegrees = getAbsoluteEncoderPosition().getDegrees() - angleOffset.getDegrees();
-    integratedAngleEncoder.setPosition(absolutePositionDegrees);
+    // double absolutePositionDegrees =  angleOffset.getDegrees() - getAbsoluteDegreeValue();
+    // integratedAngleEncoder.setPosition(absoluteAngleEncoder.getPosition().getValueAsDouble());
+    integratedAngleEncoder.setPosition(angleOffset.getDegrees()-getAbsoluteDegreeValue());
   }
 
   private void configAngleMotor() {
@@ -94,6 +101,10 @@ public class SwerveModule {
     angleController.setFF(Constants.Swerve.angleKFF);
     angleMotor.enableVoltageCompensation(Constants.Swerve.voltageComp);
     angleMotor.burnFlash();
+    resetToAbsolute();
+    resetToAbsolute();
+    resetToAbsolute();
+    resetToAbsolute();
     resetToAbsolute();
   }
 
@@ -143,7 +154,7 @@ public class SwerveModule {
   }
 
   public Rotation2d getAbsoluteEncoderPosition() {
-    return Rotation2d.fromDegrees(absoluteAngleEncoder.getAbsolutePosition().getValueAsDouble()*360);
+    return Rotation2d.fromDegrees(absoluteAngleEncoder.getAbsolutePosition().getValueAsDouble());
     
   }
 
