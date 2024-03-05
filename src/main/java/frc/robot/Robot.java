@@ -44,7 +44,8 @@ public class Robot extends TimedRobot {
   public double headSpeedFast = 0.60; // Right stick raise speed
 
   // Head Shooting Positions
-  public static double baseHeadAngle = 107.00;
+  public static double baseHeadAngle = 107.00; 
+  
   public static double topHeadAngle = baseHeadAngle - 90;
   public static double longShootAngle = baseHeadAngle - 41;
   public static double lineShootAngle = baseHeadAngle - 35;
