@@ -6,17 +6,19 @@
     "Blue1",
     "Blue2",
     "Blue3",
-    "Red3",
+    "TEST",
     "Red1",
-    "Red2"
+    "Red2",
+    "Red3"
   ],
   "autoFolders": [
     "Blue1",
     "Blue2",
     "Blue3",
-    "Red3",
+    "TEST",
     "Red1",
-    "Red2"
+    "Red2",
+    "Red3"
   ],
   "defaultMaxVel": 3.0,
   "defaultMaxAccel": 3.0,

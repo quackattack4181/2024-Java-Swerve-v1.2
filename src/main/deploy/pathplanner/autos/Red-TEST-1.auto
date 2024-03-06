@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.4029899488370403,
-      "y": 5.527776769839254
+      "x": 1.382399573915957,
+      "y": 7.004798511021523
     },
     "rotation": 180.0
   },
@@ -12,6 +12,12 @@
     "data": {
       "commands": [
         {
+          "type": "path",
+          "data": {
+            "pathName": "Red-TEST-Path1"
+          }
+        },
+        {
           "type": "named",
           "data": {
             "name": "runShootClose"
@@ -20,19 +26,25 @@
         {
           "type": "path",
           "data": {
-            "pathName": "B2-Path1"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "runShootClose"
+            "pathName": "Red-TEST-Path2"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Copy of B2-Path2"
+            "pathName": "Red-TEST-Path3"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Red-TEST--Path4"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Red-TEST-Path2"
           }
         },
         {
@@ -44,6 +56,6 @@
       ]
     }
   },
-  "folder": "Blue2",
+  "folder": "TEST",
   "choreoAuto": false
 }

@@ -41,15 +41,14 @@ public class Robot extends TimedRobot {
 
   // Head Raise and Lower Speed
   public static double headSpeed = 0.30;
-  public double headSpeedFast = 0.60; // Right stick raise speed
+  public static double headSpeedFast = 0.40; // Right stick raise speed
 
   // Head Shooting Positions
-  public static double baseHeadAngle = 107.00; 
-  
-  public static double topHeadAngle = baseHeadAngle - 90;
-  public static double longShootAngle = baseHeadAngle - 41;
-  public static double lineShootAngle = baseHeadAngle - 35;
-  public static double closeShootAngle = baseHeadAngle - 25;
+  public static double baseHeadAngle = 240.00;
+  public static double topHeadAngle = baseHeadAngle - 102+5;
+  public static double longShootAngle = baseHeadAngle - 41+5;
+  public static double lineShootAngle = baseHeadAngle - 35+5;
+  public static double closeShootAngle = baseHeadAngle - 22+5;
   
   // Move shooting wheels.
   public static double shootingMotorSpeed = 0.90;
@@ -117,17 +116,17 @@ public class Robot extends TimedRobot {
   public static void shootRingAuto(double headAngle) {
     double startTime = Timer.getFPGATimestamp(); 
     double liveTime = 0.00;
-    while (liveTime < 2.5) {
+    while (liveTime < 3.0) {
       shooterMotor31.set(shootingMotorSpeed);
       shooterMotor32.set(shootingMotorSpeed);
-      if (liveTime < 2.0) {
-        setHeadAngle(headAngle);
+      if (liveTime < 2.5) {
+        setHeadAngleFast(headAngle);
       }
       if (liveTime > 1.35) {
         Motor5.set(ControlMode.PercentOutput, -intakeMotorSpeed);
       }
-      if (liveTime > 2.0) {
-        setHeadAngle(baseHeadAngle);
+      if (liveTime > 2.5) {
+        setHeadAngleFast(baseHeadAngle);
       }
       liveTime = Timer.getFPGATimestamp() - startTime;
     }
@@ -337,6 +336,19 @@ public class Robot extends TimedRobot {
       headMotor34.set(-stallSpeed);
     }
   }
+  public static void setHeadAngleFast(double targetAngle) {
+    if (getHeadAngle() > targetAngle + 5) {
+      headMotor33.set(-headSpeedFast);
+      headMotor34.set(-headSpeedFast);
+    }
+    else if (getHeadAngle() < targetAngle) {
+      headMotor33.set(headSpeedFast);
+      headMotor34.set(headSpeedFast);
+    } else {
+      headMotor33.set(-stallSpeed);
+      headMotor34.set(-stallSpeed);
+    }
+  }
 
   // ###############################################
   // ###############################################
@@ -430,9 +442,8 @@ public class Robot extends TimedRobot {
       shooterMotor31.set(shootingMotorSpeed);
       shooterMotor32.set(shootingMotorSpeed);
 
-    // TEST THIS FOR ONE BUTTON SHOOT
-    // } else if (driverTwo.getRightBumperReleased()) {
-    //   shoot();
+    } else if (driverTwo.getRightBumperReleased()) {
+      shoot();
 
     // Shoots the ring 
     } else if (driverTwo.getLeftTriggerAxis() > 0.50) { 
@@ -450,7 +461,8 @@ public class Robot extends TimedRobot {
       Motor5.set(ControlMode.PercentOutput, -intakeMotorSpeed);
     }
     else if (driverTwo.getRightBumper() == true) {
-      Motor5.set(ControlMode.PercentOutput, -intakeMotorSpeed);
+      shooterMotor31.set(shootingMotorSpeed);
+      shooterMotor32.set(shootingMotorSpeed);
     }
     // Green wheels push out the ring
     else if (driverTwo.getAButton() == true) {
