@@ -413,8 +413,8 @@ public class Robot extends TimedRobot {
       setHeadAngle(topHeadAngle);
       //Above is the head all the way up angle.
 
-    } else if (driverTwo.getRightY() < -0.50) {
-      HeadUpFast();
+    // } else if (driverTwo.getRightY() < -0.50) {
+    //   HeadUpFast();
 
     // Head Angle One
     } else if (driverTwo.getXButton()) {

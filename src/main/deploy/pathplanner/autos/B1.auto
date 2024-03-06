@@ -20,7 +20,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "B1-Path1"
+            "pathName": "Red1-Path1-FINAL"
           }
         },
         {
@@ -32,18 +32,12 @@
         {
           "type": "path",
           "data": {
-            "pathName": "B1-Path2"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "runShootClose"
+            "pathName": "Red1-Path2"
           }
         }
       ]
     }
   },
-  "folder": "Blue1",
+  "folder": "R1",
   "choreoAuto": false
 }

@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.4029899488370403,
-      "y": 5.527776769839254
+      "x": 1.4,
+      "y": 5.53
     },
     "rotation": 180.0
   },
@@ -20,19 +20,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "B2-Path1"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "runShootClose"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "Copy of B2-Path2"
+            "pathName": "Middle-Two-Piece-Path1"
           }
         },
         {
