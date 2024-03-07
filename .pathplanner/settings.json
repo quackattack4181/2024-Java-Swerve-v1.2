@@ -3,20 +3,16 @@
   "robotLength": 0.9,
   "holonomicMode": true,
   "pathFolders": [
-    "R1",
-    "Blue2",
-    "Blue3",
-    "Red1",
-    "Red2",
+    "Blue1-Three-Piece",
+    "Blue3-Long-Side",
+    "Middle-Two-Piece",
     "Red3",
     "TEST"
   ],
   "autoFolders": [
-    "R1",
-    "Blue2",
-    "Blue3",
-    "Red1",
-    "Red2",
+    "Blue1-Three-Piece",
+    "Blue3-Long-Side",
+    "Middle-Two-Piece",
     "Red3",
     "TEST"
   ],

@@ -16,16 +16,16 @@
     },
     {
       "anchor": {
-        "x": 6.961246779636416,
-        "y": 0.7817772778402698
+        "x": 7.054064478499327,
+        "y": 1.1694154442439941
       },
       "prevControl": {
-        "x": 1.335861243151058,
-        "y": 0.7482129249972782
+        "x": 1.4286789420139687,
+        "y": 1.1358510914010025
       },
       "nextControl": {
-        "x": 12.562401036890094,
-        "y": 0.8151970526448863
+        "x": 12.655218735753005,
+        "y": 1.2028352190486107
       },
       "isLocked": false,
       "linkedName": null
@@ -60,20 +60,20 @@
       "linkedName": null
     }
   ],
-  "rotationTargets": [
+  "rotationTargets": [],
+  "constraintZones": [],
+  "eventMarkers": [
     {
-      "waypointRelativePos": 0.85,
-      "rotationDegrees": 179.1706271438539,
-      "rotateFast": false
-    },
-    {
-      "waypointRelativePos": 1.0499999999999998,
-      "rotationDegrees": -178.87669728592456,
-      "rotateFast": false
+      "name": "Run Intake",
+      "waypointRelativePos": 1.0999999999999999,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": []
+        }
+      }
     }
   ],
-  "constraintZones": [],
-  "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 5.0,
     "maxAcceleration": 5.0,
@@ -86,7 +86,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Blue3",
+  "folder": "Blue3-Long-Side",
   "previewStartingState": {
     "rotation": 133.79251529269027,
     "velocity": 0

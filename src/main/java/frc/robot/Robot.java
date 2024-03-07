@@ -401,6 +401,9 @@ public class Robot extends TimedRobot {
     if (driver.getStartButtonPressed()) {
       RobotContainer.InvertControlModifier = RobotContainer.InvertControlModifier * -1.00;
     }
+    if (driver.getLeftStickButton() && driver.getRightStickButtonReleased()) {
+      Swerve.zeroGyro();
+    }
 
 
     /* Driver Two Controls *////////////////////////////////////////////////////////////////////////

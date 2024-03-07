@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.86,
-      "y": 4.4
+      "x": 0.8592474327805798,
+      "y": 6.7092419899125515
     },
-    "rotation": 133.0
+    "rotation": -133.0
   },
   "command": {
     "type": "sequential",
@@ -20,7 +20,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "B3-Path1"
+            "pathName": "Blue1-Path1-FINAL"
           }
         },
         {
@@ -32,18 +32,12 @@
         {
           "type": "path",
           "data": {
-            "pathName": "B3-Path2"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "runShootClose"
+            "pathName": "Blue1-Path2-FINAL"
           }
         }
       ]
     }
   },
-  "folder": "Blue3",
+  "folder": "Blue1-Three-Piece",
   "choreoAuto": false
 }

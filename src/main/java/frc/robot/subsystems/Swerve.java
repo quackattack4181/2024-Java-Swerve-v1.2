@@ -22,7 +22,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class Swerve extends SubsystemBase {
-  public final AHRS gyro;
+  public static AHRS gyro;
 
   public SwerveDriveOdometry swerveOdometry;
   public static SwerveModule[] mSwerveMods;
@@ -163,7 +163,7 @@ public class Swerve extends SubsystemBase {
     return states;
   }
 
-  public void zeroGyro() {
+  public static void zeroGyro() {
     gyro.zeroYaw();
   }
 
