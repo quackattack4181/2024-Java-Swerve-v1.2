@@ -63,7 +63,7 @@ public class Swerve extends SubsystemBase {
 
                   var alliance = DriverStation.getAlliance();
                   if (alliance.isPresent()) {
-                    return alliance.get() == DriverStation.Alliance.Red;
+                    return alliance.get() == alliance.get(); //////////////////////////////////////////////////////change this to blue?
                   }
                   return false;
                 },

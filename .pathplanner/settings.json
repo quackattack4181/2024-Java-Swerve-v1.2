@@ -4,16 +4,16 @@
   "holonomicMode": true,
   "pathFolders": [
     "Blue1-Three-Piece",
-    "Blue3-Long-Side",
+    "Long-Side",
     "Middle-Two-Piece",
-    "Red3",
+    "Red1-Three-Piece",
     "TEST"
   ],
   "autoFolders": [
     "Blue1-Three-Piece",
-    "Blue3-Long-Side",
+    "Long-Side",
     "Middle-Two-Piece",
-    "Red3",
+    "Red1-Three-Piece",
     "TEST"
   ],
   "defaultMaxVel": 3.0,

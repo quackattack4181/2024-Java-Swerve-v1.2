@@ -2,19 +2,25 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.382399573915957,
-      "y": 7.004798511021523
+      "x": 15.6,
+      "y": 6.7092419899125515
     },
-    "rotation": 180.0
+    "rotation": -46.297689969880025
   },
   "command": {
     "type": "sequential",
     "data": {
       "commands": [
         {
+          "type": "named",
+          "data": {
+            "name": "runShootClose"
+          }
+        },
+        {
           "type": "path",
           "data": {
-            "pathName": "Red-TEST-Path1"
+            "pathName": "Red1-Path1-FINAL"
           }
         },
         {
@@ -26,36 +32,24 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Red-TEST-Path2"
+            "pathName": "Red1-Path2-FINAL"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Red-TEST-Path3"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "Red-TEST--Path4"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "Red-TEST-Path2"
+            "pathName": "Red1-Path3-FINAL"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "runShootClose"
+            "name": "runShootLine"
           }
         }
       ]
     }
   },
-  "folder": "TEST",
+  "folder": "Red1-Three-Piece",
   "choreoAuto": false
 }

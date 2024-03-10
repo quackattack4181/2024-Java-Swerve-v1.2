@@ -51,7 +51,7 @@ public class Robot extends TimedRobot {
   public static double closeShootAngle = baseHeadAngle - 22+5;
   
   // Move shooting wheels.
-  public static double shootingMotorSpeed = 0.90;
+  public static double shootingMotorSpeed = 0.90; // Should be 90
   public double shootingMotorSpeedSlow = 0.10;
   
   // Climbing motors speed.
@@ -260,17 +260,17 @@ public class Robot extends TimedRobot {
   public void robotPeriodic() {
     CommandScheduler.getInstance().run();
 
-    SmartDashboard.putNumber("Mod0- Absolute - 7 & 8", Swerve.mSwerveMods[0].absoluteAngleEncoder.getAbsolutePosition().getValueAsDouble()*360);
-    SmartDashboard.putNumber("Mod0- Integrated - 7 & 8", Swerve.mSwerveMods[0].integratedAngleEncoder.getPosition());
+    // SmartDashboard.putNumber("Mod0- Absolute - 7 & 8", Swerve.mSwerveMods[0].absoluteAngleEncoder.getAbsolutePosition().getValueAsDouble()*360);
+    // SmartDashboard.putNumber("Mod0- Integrated - 7 & 8", Swerve.mSwerveMods[0].integratedAngleEncoder.getPosition());
 
-    SmartDashboard.putNumber("Mod1- Absolute - 1 & 2", Swerve.mSwerveMods[1].absoluteAngleEncoder.getAbsolutePosition().getValueAsDouble()*360);
-    SmartDashboard.putNumber("Mod1- Integrated - 1 & 2", Swerve.mSwerveMods[1].integratedAngleEncoder.getPosition());
+    // SmartDashboard.putNumber("Mod1- Absolute - 1 & 2", Swerve.mSwerveMods[1].absoluteAngleEncoder.getAbsolutePosition().getValueAsDouble()*360);
+    // SmartDashboard.putNumber("Mod1- Integrated - 1 & 2", Swerve.mSwerveMods[1].integratedAngleEncoder.getPosition());
 
-    SmartDashboard.putNumber("Mod2- Absolute - 5 & 6", Swerve.mSwerveMods[2].absoluteAngleEncoder.getAbsolutePosition().getValueAsDouble()*360);
-    SmartDashboard.putNumber("Mod2- Integrated - 5 & 6", Swerve.mSwerveMods[2].integratedAngleEncoder.getPosition());
+    // SmartDashboard.putNumber("Mod2- Absolute - 5 & 6", Swerve.mSwerveMods[2].absoluteAngleEncoder.getAbsolutePosition().getValueAsDouble()*360);
+    // SmartDashboard.putNumber("Mod2- Integrated - 5 & 6", Swerve.mSwerveMods[2].integratedAngleEncoder.getPosition());
 
-    SmartDashboard.putNumber("Mod3- Absolute - 3 & 4", Swerve.mSwerveMods[3].absoluteAngleEncoder.getAbsolutePosition().getValueAsDouble()*360);
-    SmartDashboard.putNumber("Mod3- Integrated - 3 & 4", Swerve.mSwerveMods[3].integratedAngleEncoder.getPosition());
+    // SmartDashboard.putNumber("Mod3- Absolute - 3 & 4", Swerve.mSwerveMods[3].absoluteAngleEncoder.getAbsolutePosition().getValueAsDouble()*360);
+    // SmartDashboard.putNumber("Mod3- Integrated - 3 & 4", Swerve.mSwerveMods[3].integratedAngleEncoder.getPosition());
 
 
     // SmartDashboard.putNumber("Mod1 - 7 & 8", Swerve.mSwerveMods[1].getState().angle.getDegrees());
@@ -401,7 +401,7 @@ public class Robot extends TimedRobot {
     if (driver.getStartButtonPressed()) {
       RobotContainer.InvertControlModifier = RobotContainer.InvertControlModifier * -1.00;
     }
-    if (driver.getLeftStickButton() && driver.getRightStickButtonReleased()) {
+    if (driver.getAButtonPressed()) {
       Swerve.zeroGyro();
     }
 
