@@ -273,10 +273,10 @@ public class Robot extends TimedRobot {
     // SmartDashboard.putNumber("Mod3- Integrated - 3 & 4", Swerve.mSwerveMods[3].integratedAngleEncoder.getPosition());
 
 
-    // SmartDashboard.putNumber("Mod1 - 7 & 8", Swerve.mSwerveMods[1].getState().angle.getDegrees());
-    // SmartDashboard.putNumber("Mod1 - 1 & 2", Swerve.mSwerveMods[1].getState().angle.getDegrees());
-    // SmartDashboard.putNumber("Mod2 - 5 & 6", Swerve.mSwerveMods[2].getState().angle.getDegrees());
-    // SmartDashboard.putNumber("Mod3 - 3 & 4", Swerve.mSwerveMods[3].getState().angle.getDegrees());
+    SmartDashboard.putNumber("Mod1 - 7 & 8", Swerve.mSwerveMods[1].getState().angle.getDegrees());
+    SmartDashboard.putNumber("Mod1 - 1 & 2", Swerve.mSwerveMods[1].getState().angle.getDegrees());
+    SmartDashboard.putNumber("Mod2 - 5 & 6", Swerve.mSwerveMods[2].getState().angle.getDegrees());
+    SmartDashboard.putNumber("Mod3 - 3 & 4", Swerve.mSwerveMods[3].getState().angle.getDegrees());
     SmartDashboard.putNumber("Head Angle Position", getHeadAngle());
     
   }
